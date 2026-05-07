@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Templates\\template-short-reels.json">
+    <Content Update="Templates\\template-short-reels.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
