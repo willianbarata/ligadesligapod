@@ -25,3 +25,11 @@ C:\dev\ligadesligapod\obj\Release\net8.0\refint\LigaDesligaPod.Api.dll
 C:\dev\ligadesligapod\obj\Release\net8.0\LigaDesligaPod.Api.pdb
 C:\dev\ligadesligapod\obj\Release\net8.0\LigaDesligaPod.Api.genruntimeconfig.cache
 C:\dev\ligadesligapod\obj\Release\net8.0\ref\LigaDesligaPod.Api.dll
+C:\dev\ligadesligapod\bin\Release\net8.0\Microsoft.OpenApi.dll
+C:\dev\ligadesligapod\bin\Release\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\dev\ligadesligapod\bin\Release\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\dev\ligadesligapod\bin\Release\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\dev\ligadesligapod\obj\Release\net8.0\LigaDesligaPod.Api.csproj.AssemblyReference.cache
+C:\dev\ligadesligapod\obj\Release\net8.0\LigaDesligaPod.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\dev\ligadesligapod\obj\Release\net8.0\LigaDesligaPod.Api.sourcelink.json
+C:\dev\ligadesligapod\obj\Release\net8.0\LigaDesl.F4B4E476.Up2Date

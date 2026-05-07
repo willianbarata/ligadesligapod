@@ -4,6 +4,8 @@ using LigaDesligaPod.Services.Options;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddOptions<RunPodOptions>()
@@ -15,6 +17,11 @@ builder.Services.AddHttpClient();
 builder.Services.AddSingleton<RunPodService>();
 
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.MapGet("/", () => Results.Redirect("/swagger"));
 
 app.MapControllers();
 
