@@ -15,6 +15,7 @@ builder.Services
 
 builder.Services.AddHttpClient();
 builder.Services.AddSingleton<RunPodService>();
+builder.Services.AddSingleton<ComfyUiService>();
 
 var app = builder.Build();
 

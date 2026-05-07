@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LigaDesligaPod.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+582066f6490c38b02075a2973f77a063eaf7c59a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e71e68573ea39091ea826886ce1d46bdc0441060")]
 [assembly: System.Reflection.AssemblyProductAttribute("LigaDesligaPod.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LigaDesligaPod.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

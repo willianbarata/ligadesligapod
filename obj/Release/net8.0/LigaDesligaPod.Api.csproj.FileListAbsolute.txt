@@ -33,3 +33,4 @@ C:\dev\ligadesligapod\obj\Release\net8.0\LigaDesligaPod.Api.csproj.AssemblyRefer
 C:\dev\ligadesligapod\obj\Release\net8.0\LigaDesligaPod.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\dev\ligadesligapod\obj\Release\net8.0\LigaDesligaPod.Api.sourcelink.json
 C:\dev\ligadesligapod\obj\Release\net8.0\LigaDesl.F4B4E476.Up2Date
+C:\dev\ligadesligapod\bin\Release\net8.0\Templates\template-short-reels.json
