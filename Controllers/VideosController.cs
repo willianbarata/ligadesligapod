@@ -17,24 +17,33 @@ public sealed class VideosController : ControllerBase
         _runPod = runPod;
     }
 
+    public sealed class CriarVideoRequest
+    {
+        [FromForm(Name = "image")]
+        public IFormFile? Image { get; init; }
+
+        [FromForm(Name = "prompt")]
+        public string? Prompt { get; init; }
+    }
+
     [HttpPost]
     [RequestSizeLimit(50_000_000)]
+    [Consumes("multipart/form-data")]
     public async Task<IActionResult> CriarAsync(
-        [FromForm] IFormFile image,
-        [FromForm] string prompt,
+        [FromForm] CriarVideoRequest request,
         CancellationToken cancellationToken)
     {
-        if (image is null || image.Length <= 0)
+        if (request.Image is null || request.Image.Length <= 0)
         {
             return BadRequest(new { message = "Envie o arquivo no campo multipart 'image'." });
         }
 
-        if (string.IsNullOrWhiteSpace(prompt))
+        if (string.IsNullOrWhiteSpace(request.Prompt))
         {
             return BadRequest(new { message = "Envie o texto no campo multipart 'prompt'." });
         }
 
-        var upload = await _comfy.UploadImageAsync(image, cancellationToken);
+        var upload = await _comfy.UploadImageAsync(request.Image, cancellationToken);
         if (!upload.Success || string.IsNullOrWhiteSpace(upload.FileName))
         {
             return StatusCode(upload.StatusCode, new
@@ -70,7 +79,7 @@ public sealed class VideosController : ControllerBase
         // 2) injetar prompt no nó 267:266 -> inputs.value
         if (graph["267:266"]?["inputs"] is JsonObject promptInputs)
         {
-            promptInputs["value"] = prompt;
+            promptInputs["value"] = request.Prompt;
         }
 
         var queued = await _comfy.QueuePromptAsync(graph, cancellationToken);
@@ -130,4 +139,3 @@ public sealed class VideosController : ControllerBase
         return File(download.Bytes, download.ContentType ?? "application/octet-stream", fileDownloadName: found.FileName);
     }
 }
-

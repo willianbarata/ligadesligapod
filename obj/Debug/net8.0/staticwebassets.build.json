@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "92zg7Z2U70U2mX00nYEVsoRCwSpMWSVd2qJ57arUYFI=",
+  "Source": "LigaDesligaPod.Api",
+  "BasePath": "_content/LigaDesligaPod.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
