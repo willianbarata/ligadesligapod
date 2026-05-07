@@ -17,7 +17,7 @@ public sealed class RunPodService
 
     public string GetComfyUiBaseUrl() => $"https://{_options.PodId}-{_options.ComfyPort}.proxy.runpod.net";
 
-    public async Task<(bool Success, int StatusCode)> StartPodAsync(CancellationToken cancellationToken)
+    public async Task<(bool Success, int StatusCode, string? Body)> StartPodAsync(CancellationToken cancellationToken)
     {
         using var request = new HttpRequestMessage(
             HttpMethod.Post,
@@ -28,10 +28,11 @@ public sealed class RunPodService
         var http = _httpClientFactory.CreateClient();
         using var response = await http.SendAsync(request, cancellationToken);
 
-        return (response.IsSuccessStatusCode, (int)response.StatusCode);
+        var body = await response.Content.ReadAsStringAsync(cancellationToken);
+        return (response.IsSuccessStatusCode, (int)response.StatusCode, string.IsNullOrWhiteSpace(body) ? null : body);
     }
 
-    public async Task<(bool Success, int StatusCode)> StopPodAsync(CancellationToken cancellationToken)
+    public async Task<(bool Success, int StatusCode, string? Body)> StopPodAsync(CancellationToken cancellationToken)
     {
         using var request = new HttpRequestMessage(
             HttpMethod.Post,
@@ -42,7 +43,8 @@ public sealed class RunPodService
         var http = _httpClientFactory.CreateClient();
         using var response = await http.SendAsync(request, cancellationToken);
 
-        return (response.IsSuccessStatusCode, (int)response.StatusCode);
+        var body = await response.Content.ReadAsStringAsync(cancellationToken);
+        return (response.IsSuccessStatusCode, (int)response.StatusCode, string.IsNullOrWhiteSpace(body) ? null : body);
     }
 
     public async Task<(bool Online, int? StatusCode)> IsComfyUiOnlineAsync(CancellationToken cancellationToken)

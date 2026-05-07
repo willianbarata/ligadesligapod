@@ -15,7 +15,18 @@ public sealed class DesligarController : ControllerBase
     public async Task<IActionResult> DesligarAsync(CancellationToken cancellationToken)
     {
         var stopped = await _runPod.StopPodAsync(cancellationToken);
-        return Ok(new { stopped = stopped.Success, stopped.StatusCode, message = "Comando de stop enviado." });
+
+        if (!stopped.Success)
+        {
+            return StatusCode(stopped.StatusCode, new
+            {
+                stopped = false,
+                stopped.StatusCode,
+                stopped.Body,
+                message = "Falha ao enviar comando de stop. Veja o Body para detalhes."
+            });
+        }
+
+        return Ok(new { stopped = true, stopped.StatusCode, stopped.Body, message = "Comando de stop enviado." });
     }
 }
-

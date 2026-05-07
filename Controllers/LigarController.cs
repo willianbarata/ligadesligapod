@@ -19,12 +19,24 @@ public sealed class LigarController : ControllerBase
     {
         var started = await _runPod.StartPodAsync(cancellationToken);
 
+        if (!started.Success)
+        {
+            return StatusCode(started.StatusCode, new
+            {
+                started = false,
+                started.StatusCode,
+                started.Body,
+                message = "Falha ao enviar comando de start. Veja o Body para detalhes."
+            });
+        }
+
         if (!esperarOnline)
         {
             return Accepted(new
             {
                 started = started.Success,
                 started.StatusCode,
+                started.Body,
                 message = "Comando de start enviado.",
                 comfyUiBaseUrl = _runPod.GetComfyUiBaseUrl()
             });
@@ -38,9 +50,10 @@ public sealed class LigarController : ControllerBase
         {
             started = started.Success,
             started.StatusCode,
+            started.Body,
+            message = online ? "ComfyUI online." : "ComfyUI ainda não respondeu dentro do tempo.",
             online,
             comfyUiBaseUrl = _runPod.GetComfyUiBaseUrl()
         });
     }
 }
-
